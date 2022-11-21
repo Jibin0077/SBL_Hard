@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221121 14:52:22.440" rpa="true" schemaversion="3">
+<suite id="s1" name="Task1" source="C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\Task1.robot">
+<test id="s1-t1" name="Run Task" line="8">
+<kw name="Portal Launching" library="Subflow">
+<kw name="Config Data Collection" library="Subflow">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{out_config}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221121 14:52:30.443" level="INFO">&amp;{out_config} = { }</msg>
+<status status="PASS" starttime="20221121 14:52:30.443" endtime="20221121 14:52:30.443"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${CONFIG_FILE}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221121 14:52:30.474" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001C3348BCFD0&gt;</msg>
+<status status="PASS" starttime="20221121 14:52:30.443" endtime="20221121 14:52:30.474"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Reading worksheet: ${CONFIG_SHEET}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221121 14:52:30.474" endtime="20221121 14:52:30.474"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${table}</var>
+<arg>${CONFIG_SHEET}</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221121 14:52:30.481" level="INFO">Created table: Table(columns=['Name', 'Value'], rows=4)</msg>
+<msg timestamp="20221121 14:52:30.481" level="INFO">${table} = Table(columns=['Name', 'Value'], rows=4)</msg>
+<status status="PASS" starttime="20221121 14:52:30.481" endtime="20221121 14:52:30.481"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{table}</value>
+<iter>
+<var name="${row}">{'Name': 'URL', 'Value': 'https://archive.org/details/genealogy?and%5B%5D=subject%3A%22genealogy%22&amp;and%5B%5D=mediatype%3A%22texts%22&amp;and%5B%5D=collection%3A%22americana%22&amp;and%5B%5D=collection%3A%22a...</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221121 14:52:30.482" endtime="20221121 14:52:30.484"/>
+</kw>
+<status status="PASS" starttime="20221121 14:52:30.482" endtime="20221121 14:52:30.484"/>
+</branch>
+<status status="PASS" starttime="20221121 14:52:30.482" endtime="20221121 14:52:30.484"/>
+</if>
+<status status="PASS" starttime="20221121 14:52:30.482" endtime="20221121 14:52:30.484"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Browser', 'Value': 'Edge'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221121 14:52:30.484" endtime="20221121 14:52:30.485"/>
+</kw>
+<status status="PASS" starttime="20221121 14:52:30.484" endtime="20221121 14:52:30.485"/>
+</branch>
+<status status="PASS" starttime="20221121 14:52:30.484" endtime="20221121 14:52:30.485"/>
+</if>
+<status status="PASS" starttime="20221121 14:52:30.484" endtime="20221121 14:52:30.485"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Headless', 'Value': 'True'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221121 14:52:30.486" endtime="20221121 14:52:30.487"/>
+</kw>
+<status status="PASS" starttime="20221121 14:52:30.486" endtime="20221121 14:52:30.487"/>
+</branch>
+<status status="PASS" starttime="20221121 14:52:30.485" endtime="20221121 14:52:30.487"/>
+</if>
+<status status="PASS" starttime="20221121 14:52:30.485" endtime="20221121 14:52:30.487"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Down_dir', 'Value': 'C:\\Users\\Q0041\\Documents\\Robots\\SBL_Corp_Hard_Difficulty\\Images'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221121 14:52:30.488" endtime="20221121 14:52:30.488"/>
+</kw>
+<status status="PASS" starttime="20221121 14:52:30.487" endtime="20221121 14:52:30.488"/>
+</branch>
+<status status="PASS" starttime="20221121 14:52:30.487" endtime="20221121 14:52:30.488"/>
+</if>
+<status status="PASS" starttime="20221121 14:52:30.487" endtime="20221121 14:52:30.488"/>
+</iter>
+<status status="PASS" starttime="20221121 14:52:30.481" endtime="20221121 14:52:30.488"/>
+</for>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${CONFIG}</arg>
+<arg>${out_config}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221121 14:52:30.489" level="INFO">${CONFIG} = {'URL': 'https://archive.org/details/genealogy?and%5B%5D=subject%3A%22genealogy%22&amp;and%5B%5D=mediatype%3A%22texts%22&amp;and%5B%5D=collection%3A%22americana%22&amp;and%5B%5D=collection%3A%22allen_county%22&amp;an...</msg>
+<status status="PASS" starttime="20221121 14:52:30.488" endtime="20221121 14:52:30.489"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221121 14:52:30.490" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001C3348BCFD0&gt;</msg>
+<status status="PASS" starttime="20221121 14:52:30.489" endtime="20221121 14:52:30.490"/>
+</kw>
+<status status="PASS" starttime="20221121 14:52:30.443" endtime="20221121 14:52:30.490"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${URL}</var>
+<arg>${CONFIG}[URL]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:52:30.490" level="INFO">${URL} = https://archive.org/details/genealogy?and%5B%5D=subject%3A%22genealogy%22&amp;and%5B%5D=mediatype%3A%22texts%22&amp;and%5B%5D=collection%3A%22americana%22&amp;and%5B%5D=collection%3A%22allen_county%22&amp;and%5B%5D=c...</msg>
+<status status="PASS" starttime="20221121 14:52:30.490" endtime="20221121 14:52:30.490"/>
+</kw>
+<kw name="Create Csv" library="Data">
+<msg timestamp="20221121 14:52:30.513" level="INFO">C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\input</msg>
+<status status="PASS" starttime="20221121 14:52:30.490" endtime="20221121 14:52:30.513"/>
+</kw>
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>${URL}</arg>
+<arg>maximized=${True}</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20221121 14:52:30.515" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221121 14:52:32.086" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20221121 14:52:32.086" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20221121 14:52:32.086" level="INFO">Opening url 'https://archive.org/details/genealogy?and%5B%5D=subject%3A%22genealogy%22&amp;and%5B%5D=mediatype%3A%22texts%22&amp;and%5B%5D=collection%3A%22americana%22&amp;and%5B%5D=collection%3A%22allen_county%22&amp;and%5B%5D=collection%3A%22robarts%22&amp;and%5B%5D=collection%3A%22libraryofvirginia%22&amp;and%5B%5D=collection%3A%22microfilm%22&amp;and%5B%5D=collection%3A%22cdl%22&amp;and%5B%5D=collection%3A%22genealogy%22&amp;and%5B%5D=collection%3A%22library_of_congress%22&amp;and%5B%5D=collection%3A%22reclaimtherecords%22&amp;and%5B%5D=collection%3A%22ColumbiaUniversityLibraries%22&amp;and%5B%5D=collection%3A%22bostonpubliclibrary%22&amp;and%5B%5D=collection%3A%22blc%22&amp;and%5B%5D=collection%3A%22cornell%22&amp;and%5B%5D=collection%3A%22newyorkpubliclibrary%22&amp;and%5B%5D=collection%3A%22fairfaxcountypubliclibrary%22&amp;and%5B%5D=collection%3A%22family_history_library%22&amp;and%5B%5D=collection%3A%22arlingtonheightsmemoriallibrary%22&amp;and%5B%5D=collection%3A%22saint_marys_college%22&amp;and%5B%5D=collection%3A%22regionaldigitizationmass%22&amp;and%5B%5D=collection%3A%22brigham_young_university%22&amp;and%5B%5D=collection%3A%22alleghanyhighlandsregionallibrary%22&amp;and%5B%5D=collection%3A%22trent_university%22&amp;and%5B%5D=collection%3A%22uconn_libraries%22&amp;and%5B%5D=collection%3A%22easternshorepubliclibrary%22&amp;and%5B%5D=collection%3A%22newportnewspubliclibrary%22&amp;and%5B%5D=collection%3A%22churchhistorylibrary%22&amp;and%5B%5D=collection%3A%22portsmouthpubliclibrary%22&amp;and%5B%5D=collection%3A%22hamptonpubliclibrary%22&amp;and%5B%5D=collection%3A%22brighamyounguniversityidaho%22&amp;and%5B%5D=collection%3A%22denverpubliclibrary-ol%22&amp;and%5B%5D=collection%3A%22universityofcoloradoboulder-ol%22&amp;and%5B%5D=collection%3A%22sonomacountylibrary-ol%22&amp;and%5B%5D=collection%3A%22univ_florida_smathers%22&amp;sort=titleSorter'</msg>
+<status status="PASS" starttime="20221121 14:52:30.513" endtime="20221121 14:52:59.019"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:09.026" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20221121 14:52:59.019" endtime="20221121 14:53:09.027"/>
+</kw>
+<kw name="Ad Donation Banner Closing" library="Subflow">
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Donation_Vis}</var>
+<arg>${el_donation_Vis}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:09.057" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[@id="donate-close-button"]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221121 14:53:09.057" level="INFO">${Donation_Vis} = False</msg>
+<status status="PASS" starttime="20221121 14:53:09.028" endtime="20221121 14:53:09.057"/>
+</kw>
+<if>
+<branch type="IF" condition="${Donation_Vis}">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>${el_donation_Vis}</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:09.057" endtime="20221121 14:53:09.057"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:09.057" endtime="20221121 14:53:09.057"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:09.057" endtime="20221121 14:53:09.057"/>
+</if>
+<status status="PASS" starttime="20221121 14:53:09.027" endtime="20221121 14:53:09.057"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>5x</arg>
+<arg>5sec</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${el_img_count}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>${el_img_count}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221121 14:53:09.057" endtime="20221121 14:53:09.099"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:09.057" endtime="20221121 14:53:09.099"/>
+</kw>
+<kw name="Get Element Count" library="RPA.Browser.Selenium">
+<var>${Count}</var>
+<arg>${el_img_count}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20221121 14:53:09.113" level="INFO">${Count} = 75</msg>
+<status status="PASS" starttime="20221121 14:53:09.099" endtime="20221121 14:53:09.113"/>
+</kw>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${Count}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221121 14:53:09.113" endtime="20221121 14:53:09.114"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>0</value>
+<value>${Count}</value>
+<value>2</value>
+<iter>
+<var name="${i}">0</var>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>5x</arg>
+<arg>5sec</arg>
+<arg>Click Element</arg>
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:09.118" level="INFO">Clicking element '//*[@id="ikind-titleSorter"]/div/div[2]/div[2]/div[1]/a/div[1]/img' with CTRL.</msg>
+<status status="PASS" starttime="20221121 14:53:09.116" endtime="20221121 14:53:09.455"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:09.115" endtime="20221121 14:53:09.455"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:10.463" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:09.455" endtime="20221121 14:53:10.463"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:10.463" endtime="20221121 14:53:10.525"/>
+</kw>
+<kw name="Ad Donation Banner Closing" library="Subflow">
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Donation_Vis}</var>
+<arg>${el_donation_Vis}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:12.862" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[@id="donate-close-button"]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221121 14:53:12.862" level="INFO">${Donation_Vis} = False</msg>
+<status status="PASS" starttime="20221121 14:53:10.525" endtime="20221121 14:53:12.862"/>
+</kw>
+<if>
+<branch type="IF" condition="${Donation_Vis}">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>${el_donation_Vis}</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:12.870" endtime="20221121 14:53:12.870"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:12.870" endtime="20221121 14:53:12.870"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:12.862" endtime="20221121 14:53:12.870"/>
+</if>
+<status status="PASS" starttime="20221121 14:53:10.525" endtime="20221121 14:53:12.870"/>
+</kw>
+<kw name="Book Details Extraction" library="Subflow">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Title}</var>
+<arg>${el_title}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:12.929" level="INFO">${Ext_Title} = 10th census, 1880, New Jersey [microform]</msg>
+<status status="PASS" starttime="20221121 14:53:12.870" endtime="20221121 14:53:12.929"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Author}</var>
+<arg>${el_Author}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:12.971" level="INFO">${Ext_Author} = United States. Bureau of the Census; United States. National Archives and Records Service</msg>
+<status status="PASS" starttime="20221121 14:53:12.929" endtime="20221121 14:53:12.971"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publ_date_Vis}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:13.013" level="INFO">Element '//*[contains(text(),"Publication date")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:13.013" level="INFO">${publ_date_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:12.971" endtime="20221121 14:53:13.013"/>
+</kw>
+<if>
+<branch type="IF" condition="${publ_date_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publ_date}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:13.050" level="INFO">${Ext_Publ_date} = [197-]</msg>
+<status status="PASS" starttime="20221121 14:53:13.013" endtime="20221121 14:53:13.050"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:13.013" endtime="20221121 14:53:13.050"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publ_date}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:13.050" endtime="20221121 14:53:13.050"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:13.050" endtime="20221121 14:53:13.050"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:13.013" endtime="20221121 14:53:13.050"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publisher_Vis}</var>
+<arg>${el_Publisher}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:13.099" level="INFO">Element '//*[contains(text(),"Publisher")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:13.099" level="INFO">${publisher_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:13.050" endtime="20221121 14:53:13.099"/>
+</kw>
+<if>
+<branch type="IF" condition="${publisher_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publisher}</var>
+<arg>${el_Publisher}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:13.148" level="INFO">${Ext_Publisher} = Washington : National Archives and Records Service, General Services Administration</msg>
+<status status="PASS" starttime="20221121 14:53:13.107" endtime="20221121 14:53:13.148"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:13.107" endtime="20221121 14:53:13.148"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publisher}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:13.148" endtime="20221121 14:53:13.148"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:13.148" endtime="20221121 14:53:13.148"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:13.107" endtime="20221121 14:53:13.148"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Collection_Vis}</var>
+<arg>${el_Collection}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:13.191" level="INFO">Element '//*[contains(text(),"Collection")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:13.191" level="INFO">${Collection_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:13.148" endtime="20221121 14:53:13.191"/>
+</kw>
+<if>
+<branch type="IF" condition="${Collection_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Collection}</var>
+<arg>${el_Collection}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:13.231" level="INFO">${Ext_Collection} = 1880_census; microfilm; americana; us_census; genealogy; additional_collections</msg>
+<status status="PASS" starttime="20221121 14:53:13.191" endtime="20221121 14:53:13.231"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:13.191" endtime="20221121 14:53:13.231"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Collection}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:13.231" endtime="20221121 14:53:13.231"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:13.231" endtime="20221121 14:53:13.231"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:13.191" endtime="20221121 14:53:13.231"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Contributor_Vis}</var>
+<arg>${el_Contributor}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:13.266" level="INFO">Element '//*[contains(text(),"Contributor")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:13.266" level="INFO">${Contributor_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:13.231" endtime="20221121 14:53:13.266"/>
+</kw>
+<if>
+<branch type="IF" condition="${Contributor_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Contributor}</var>
+<arg>${el_Contributor}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:13.299" level="INFO">${Ext_Contributor} = Allen County Public Library Genealogy Center</msg>
+<status status="PASS" starttime="20221121 14:53:13.266" endtime="20221121 14:53:13.299"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:13.266" endtime="20221121 14:53:13.299"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Contributor}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:13.299" endtime="20221121 14:53:13.299"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:13.299" endtime="20221121 14:53:13.299"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:13.266" endtime="20221121 14:53:13.299"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Identifier_Vis}</var>
+<arg>${el_Identifier}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:13.341" level="INFO">Element '//*[@class="metadata-definition"]//*[contains(text(),"Identifier")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:13.341" level="INFO">${Identifier_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:13.299" endtime="20221121 14:53:13.341"/>
+</kw>
+<if>
+<branch type="IF" condition="${Identifier_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Identifier}</var>
+<arg>${el_Identifier}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:13.373" level="INFO">${Ext_Identifier} = 10thcensus0770unit</msg>
+<status status="PASS" starttime="20221121 14:53:13.341" endtime="20221121 14:53:13.373"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:13.341" endtime="20221121 14:53:13.373"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Identifier}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:13.373" endtime="20221121 14:53:13.381"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:13.373" endtime="20221121 14:53:13.381"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:13.341" endtime="20221121 14:53:13.381"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Copyright}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:13.381" level="INFO">${Ext_Copyright} = 0</msg>
+<status status="PASS" starttime="20221121 14:53:13.381" endtime="20221121 14:53:13.381"/>
+</kw>
+<kw name="Get Element Attribute" library="RPA.Browser.Selenium">
+<var>${pdf_link}</var>
+<arg>//*[@class="format-group"]//*[contains(text(),"PDF")]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20221121 14:53:13.416" level="INFO">${pdf_link} = https://archive.org/download/10thcensus0770unit/10thcensus0770unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:13.381" endtime="20221121 14:53:13.416"/>
+</kw>
+<kw name="Pdf Name" library="Data">
+<var>${Ext_pdf_name}</var>
+<arg>${pdf_link}</arg>
+<msg timestamp="20221121 14:53:13.424" level="INFO">10thcensus0770unit.pdf</msg>
+<msg timestamp="20221121 14:53:13.424" level="INFO">${Ext_pdf_name} = 10thcensus0770unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:13.424" endtime="20221121 14:53:13.424"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${DOWNLOAD_DIR}</var>
+<arg>${CONFIG}[Down_dir]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:13.424" level="INFO">${DOWNLOAD_DIR} = C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\Images</msg>
+<status status="PASS" starttime="20221121 14:53:13.424" endtime="20221121 14:53:13.424"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${header_list}</var>
+<arg>Title</arg>
+<arg>Author</arg>
+<arg>Publication date</arg>
+<arg>Publisher</arg>
+<arg>Collection</arg>
+<arg>Contributor</arg>
+<arg>Identifier</arg>
+<arg>Copyright</arg>
+<arg>image file name</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:13.424" level="INFO">${header_list} = ['Title', 'Author', 'Publication date', 'Publisher', 'Collection', 'Contributor', 'Identifier', 'Copyright', 'image file name']</msg>
+<status status="PASS" starttime="20221121 14:53:13.424" endtime="20221121 14:53:13.424"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${data_list}</var>
+<arg>${Ext_Title}</arg>
+<arg>${Ext_Author}</arg>
+<arg>${Ext_Publ_date}</arg>
+<arg>${Ext_Publisher}</arg>
+<arg>${Ext_Collection}</arg>
+<arg>${Ext_Contributor}</arg>
+<arg>${Ext_Identifier}</arg>
+<arg>${Ext_Copyright}</arg>
+<arg>${Ext_pdf_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:13.424" level="INFO">${data_list} = ['10th census, 1880, New Jersey [microform]', 'United States. Bureau of the Census; United States. National Archives and Records Service', '[197-]', 'Washington : National Archives and Records Service...</msg>
+<status status="PASS" starttime="20221121 14:53:13.424" endtime="20221121 14:53:13.424"/>
+</kw>
+<kw name="Append To Csv" library="Data">
+<arg>Internet_Archive_out.csv</arg>
+<arg>${data_list}</arg>
+<status status="PASS" starttime="20221121 14:53:13.424" endtime="20221121 14:53:13.424"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:12.870" endtime="20221121 14:53:13.432"/>
+</kw>
+<kw name="Close Window" library="RPA.Browser.Selenium">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20221121 14:53:13.432" endtime="20221121 14:53:13.495"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:14.509" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:13.496" endtime="20221121 14:53:14.509"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>main</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:14.509" endtime="20221121 14:53:14.509"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:09.115" endtime="20221121 14:53:14.509"/>
+</iter>
+<iter>
+<var name="${i}">2</var>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>5x</arg>
+<arg>5sec</arg>
+<arg>Click Element</arg>
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:14.525" level="INFO">Clicking element '//*[@id="ikind-titleSorter"]/div/div[4]/div[2]/div[1]/a/div[1]/img' with CTRL.</msg>
+<status status="PASS" starttime="20221121 14:53:14.525" endtime="20221121 14:53:14.864"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:14.525" endtime="20221121 14:53:14.864"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:15.881" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:14.864" endtime="20221121 14:53:15.881"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:15.881" endtime="20221121 14:53:15.954"/>
+</kw>
+<kw name="Ad Donation Banner Closing" library="Subflow">
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Donation_Vis}</var>
+<arg>${el_donation_Vis}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:16.153" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[@id="donate-close-button"]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221121 14:53:16.153" level="INFO">${Donation_Vis} = False</msg>
+<status status="PASS" starttime="20221121 14:53:15.954" endtime="20221121 14:53:16.153"/>
+</kw>
+<if>
+<branch type="IF" condition="${Donation_Vis}">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>${el_donation_Vis}</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:16.153" endtime="20221121 14:53:16.153"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:16.153" endtime="20221121 14:53:16.153"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:16.153" endtime="20221121 14:53:16.153"/>
+</if>
+<status status="PASS" starttime="20221121 14:53:15.954" endtime="20221121 14:53:16.153"/>
+</kw>
+<kw name="Book Details Extraction" library="Subflow">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Title}</var>
+<arg>${el_title}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.218" level="INFO">${Ext_Title} = 10th census, 1880, New Jersey [microform]</msg>
+<status status="PASS" starttime="20221121 14:53:16.153" endtime="20221121 14:53:16.218"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Author}</var>
+<arg>${el_Author}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.276" level="INFO">${Ext_Author} = United States. Bureau of the Census; United States. National Archives and Records Service</msg>
+<status status="PASS" starttime="20221121 14:53:16.218" endtime="20221121 14:53:16.276"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publ_date_Vis}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:16.328" level="INFO">Element '//*[contains(text(),"Publication date")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:16.328" level="INFO">${publ_date_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:16.276" endtime="20221121 14:53:16.328"/>
+</kw>
+<if>
+<branch type="IF" condition="${publ_date_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publ_date}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.369" level="INFO">${Ext_Publ_date} = [197-]</msg>
+<status status="PASS" starttime="20221121 14:53:16.328" endtime="20221121 14:53:16.369"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:16.328" endtime="20221121 14:53:16.369"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publ_date}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:16.369" endtime="20221121 14:53:16.369"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:16.369" endtime="20221121 14:53:16.369"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:16.328" endtime="20221121 14:53:16.369"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publisher_Vis}</var>
+<arg>${el_Publisher}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:16.410" level="INFO">Element '//*[contains(text(),"Publisher")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:16.410" level="INFO">${publisher_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:16.369" endtime="20221121 14:53:16.410"/>
+</kw>
+<if>
+<branch type="IF" condition="${publisher_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publisher}</var>
+<arg>${el_Publisher}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.467" level="INFO">${Ext_Publisher} = Washington : National Archives and Records Service, General Services Administration</msg>
+<status status="PASS" starttime="20221121 14:53:16.418" endtime="20221121 14:53:16.467"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:16.418" endtime="20221121 14:53:16.467"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publisher}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:16.467" endtime="20221121 14:53:16.467"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:16.467" endtime="20221121 14:53:16.467"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:16.410" endtime="20221121 14:53:16.470"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Collection_Vis}</var>
+<arg>${el_Collection}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:16.516" level="INFO">Element '//*[contains(text(),"Collection")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:16.516" level="INFO">${Collection_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:16.470" endtime="20221121 14:53:16.516"/>
+</kw>
+<if>
+<branch type="IF" condition="${Collection_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Collection}</var>
+<arg>${el_Collection}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.561" level="INFO">${Ext_Collection} = 1880_census; microfilm; americana; us_census; genealogy; additional_collections</msg>
+<status status="PASS" starttime="20221121 14:53:16.516" endtime="20221121 14:53:16.561"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:16.516" endtime="20221121 14:53:16.561"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Collection}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:16.569" endtime="20221121 14:53:16.569"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:16.561" endtime="20221121 14:53:16.569"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:16.516" endtime="20221121 14:53:16.569"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Contributor_Vis}</var>
+<arg>${el_Contributor}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:16.614" level="INFO">Element '//*[contains(text(),"Contributor")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:16.614" level="INFO">${Contributor_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:16.569" endtime="20221121 14:53:16.614"/>
+</kw>
+<if>
+<branch type="IF" condition="${Contributor_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Contributor}</var>
+<arg>${el_Contributor}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.654" level="INFO">${Ext_Contributor} = Allen County Public Library Genealogy Center</msg>
+<status status="PASS" starttime="20221121 14:53:16.614" endtime="20221121 14:53:16.654"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:16.614" endtime="20221121 14:53:16.654"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Contributor}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:16.654" endtime="20221121 14:53:16.654"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:16.654" endtime="20221121 14:53:16.654"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:16.614" endtime="20221121 14:53:16.654"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Identifier_Vis}</var>
+<arg>${el_Identifier}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:16.694" level="INFO">Element '//*[@class="metadata-definition"]//*[contains(text(),"Identifier")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:16.694" level="INFO">${Identifier_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:16.654" endtime="20221121 14:53:16.694"/>
+</kw>
+<if>
+<branch type="IF" condition="${Identifier_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Identifier}</var>
+<arg>${el_Identifier}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.734" level="INFO">${Ext_Identifier} = 10thcensus0771unit</msg>
+<status status="PASS" starttime="20221121 14:53:16.694" endtime="20221121 14:53:16.734"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:16.694" endtime="20221121 14:53:16.734"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Identifier}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:16.734" endtime="20221121 14:53:16.734"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:16.734" endtime="20221121 14:53:16.734"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:16.694" endtime="20221121 14:53:16.734"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Copyright}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:16.734" level="INFO">${Ext_Copyright} = 0</msg>
+<status status="PASS" starttime="20221121 14:53:16.734" endtime="20221121 14:53:16.734"/>
+</kw>
+<kw name="Get Element Attribute" library="RPA.Browser.Selenium">
+<var>${pdf_link}</var>
+<arg>//*[@class="format-group"]//*[contains(text(),"PDF")]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20221121 14:53:16.782" level="INFO">${pdf_link} = https://archive.org/download/10thcensus0771unit/10thcensus0771unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:16.734" endtime="20221121 14:53:16.782"/>
+</kw>
+<kw name="Pdf Name" library="Data">
+<var>${Ext_pdf_name}</var>
+<arg>${pdf_link}</arg>
+<msg timestamp="20221121 14:53:16.782" level="INFO">10thcensus0771unit.pdf</msg>
+<msg timestamp="20221121 14:53:16.782" level="INFO">${Ext_pdf_name} = 10thcensus0771unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:16.782" endtime="20221121 14:53:16.782"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${DOWNLOAD_DIR}</var>
+<arg>${CONFIG}[Down_dir]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:16.782" level="INFO">${DOWNLOAD_DIR} = C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\Images</msg>
+<status status="PASS" starttime="20221121 14:53:16.782" endtime="20221121 14:53:16.782"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${header_list}</var>
+<arg>Title</arg>
+<arg>Author</arg>
+<arg>Publication date</arg>
+<arg>Publisher</arg>
+<arg>Collection</arg>
+<arg>Contributor</arg>
+<arg>Identifier</arg>
+<arg>Copyright</arg>
+<arg>image file name</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:16.782" level="INFO">${header_list} = ['Title', 'Author', 'Publication date', 'Publisher', 'Collection', 'Contributor', 'Identifier', 'Copyright', 'image file name']</msg>
+<status status="PASS" starttime="20221121 14:53:16.782" endtime="20221121 14:53:16.782"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${data_list}</var>
+<arg>${Ext_Title}</arg>
+<arg>${Ext_Author}</arg>
+<arg>${Ext_Publ_date}</arg>
+<arg>${Ext_Publisher}</arg>
+<arg>${Ext_Collection}</arg>
+<arg>${Ext_Contributor}</arg>
+<arg>${Ext_Identifier}</arg>
+<arg>${Ext_Copyright}</arg>
+<arg>${Ext_pdf_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:16.782" level="INFO">${data_list} = ['10th census, 1880, New Jersey [microform]', 'United States. Bureau of the Census; United States. National Archives and Records Service', '[197-]', 'Washington : National Archives and Records Service...</msg>
+<status status="PASS" starttime="20221121 14:53:16.782" endtime="20221121 14:53:16.782"/>
+</kw>
+<kw name="Append To Csv" library="Data">
+<arg>Internet_Archive_out.csv</arg>
+<arg>${data_list}</arg>
+<status status="PASS" starttime="20221121 14:53:16.782" endtime="20221121 14:53:16.790"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:16.153" endtime="20221121 14:53:16.790"/>
+</kw>
+<kw name="Close Window" library="RPA.Browser.Selenium">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20221121 14:53:16.790" endtime="20221121 14:53:16.858"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:17.866" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:16.858" endtime="20221121 14:53:17.867"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>main</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:17.867" endtime="20221121 14:53:17.881"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:14.509" endtime="20221121 14:53:17.881"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>5x</arg>
+<arg>5sec</arg>
+<arg>Click Element</arg>
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:17.884" level="INFO">Clicking element '//*[@id="ikind-titleSorter"]/div/div[6]/div[2]/div[1]/a/div[1]/img' with CTRL.</msg>
+<status status="PASS" starttime="20221121 14:53:17.882" endtime="20221121 14:53:18.263"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:17.882" endtime="20221121 14:53:18.263"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:19.268" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:18.263" endtime="20221121 14:53:19.268"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:19.268" endtime="20221121 14:53:19.352"/>
+</kw>
+<kw name="Ad Donation Banner Closing" library="Subflow">
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Donation_Vis}</var>
+<arg>${el_donation_Vis}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:20.294" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[@id="donate-close-button"]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221121 14:53:20.294" level="INFO">${Donation_Vis} = False</msg>
+<status status="PASS" starttime="20221121 14:53:19.354" endtime="20221121 14:53:20.294"/>
+</kw>
+<if>
+<branch type="IF" condition="${Donation_Vis}">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>${el_donation_Vis}</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:20.294" endtime="20221121 14:53:20.294"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:20.294" endtime="20221121 14:53:20.294"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:20.294" endtime="20221121 14:53:20.294"/>
+</if>
+<status status="PASS" starttime="20221121 14:53:19.352" endtime="20221121 14:53:20.294"/>
+</kw>
+<kw name="Book Details Extraction" library="Subflow">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Title}</var>
+<arg>${el_title}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.357" level="INFO">${Ext_Title} = 10th census, 1880, New York [microform]</msg>
+<status status="PASS" starttime="20221121 14:53:20.294" endtime="20221121 14:53:20.357"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Author}</var>
+<arg>${el_Author}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.406" level="INFO">${Ext_Author} = United States. Bureau of the Census; United States. National Archives and Records Service</msg>
+<status status="PASS" starttime="20221121 14:53:20.357" endtime="20221121 14:53:20.406"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publ_date_Vis}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:20.463" level="INFO">Element '//*[contains(text(),"Publication date")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:20.463" level="INFO">${publ_date_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:20.406" endtime="20221121 14:53:20.463"/>
+</kw>
+<if>
+<branch type="IF" condition="${publ_date_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publ_date}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.519" level="INFO">${Ext_Publ_date} = [197-]</msg>
+<status status="PASS" starttime="20221121 14:53:20.463" endtime="20221121 14:53:20.519"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:20.463" endtime="20221121 14:53:20.519"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publ_date}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:20.520" endtime="20221121 14:53:20.520"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:20.519" endtime="20221121 14:53:20.521"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:20.463" endtime="20221121 14:53:20.521"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publisher_Vis}</var>
+<arg>${el_Publisher}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:20.579" level="INFO">Element '//*[contains(text(),"Publisher")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:20.579" level="INFO">${publisher_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:20.522" endtime="20221121 14:53:20.579"/>
+</kw>
+<if>
+<branch type="IF" condition="${publisher_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publisher}</var>
+<arg>${el_Publisher}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.614" level="INFO">${Ext_Publisher} = Washington, D.C. : National Archives and Records Service, General Services Administration</msg>
+<status status="PASS" starttime="20221121 14:53:20.580" endtime="20221121 14:53:20.614"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:20.580" endtime="20221121 14:53:20.614"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publisher}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:20.614" endtime="20221121 14:53:20.614"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:20.614" endtime="20221121 14:53:20.614"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:20.579" endtime="20221121 14:53:20.614"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Collection_Vis}</var>
+<arg>${el_Collection}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:20.663" level="INFO">Element '//*[contains(text(),"Collection")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:20.663" level="INFO">${Collection_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:20.614" endtime="20221121 14:53:20.663"/>
+</kw>
+<if>
+<branch type="IF" condition="${Collection_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Collection}</var>
+<arg>${el_Collection}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.703" level="INFO">${Ext_Collection} = 1880_census; microfilm; americana; us_census; genealogy; additional_collections</msg>
+<status status="PASS" starttime="20221121 14:53:20.663" endtime="20221121 14:53:20.703"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:20.663" endtime="20221121 14:53:20.703"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Collection}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:20.703" endtime="20221121 14:53:20.703"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:20.703" endtime="20221121 14:53:20.703"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:20.663" endtime="20221121 14:53:20.703"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Contributor_Vis}</var>
+<arg>${el_Contributor}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:20.745" level="INFO">Element '//*[contains(text(),"Contributor")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:20.745" level="INFO">${Contributor_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:20.703" endtime="20221121 14:53:20.745"/>
+</kw>
+<if>
+<branch type="IF" condition="${Contributor_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Contributor}</var>
+<arg>${el_Contributor}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.784" level="INFO">${Ext_Contributor} = Allen County Public Library Genealogy Center</msg>
+<status status="PASS" starttime="20221121 14:53:20.745" endtime="20221121 14:53:20.784"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:20.745" endtime="20221121 14:53:20.784"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Contributor}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:20.784" endtime="20221121 14:53:20.784"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:20.784" endtime="20221121 14:53:20.785"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:20.745" endtime="20221121 14:53:20.785"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Identifier_Vis}</var>
+<arg>${el_Identifier}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:20.833" level="INFO">Element '//*[@class="metadata-definition"]//*[contains(text(),"Identifier")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:20.833" level="INFO">${Identifier_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:20.785" endtime="20221121 14:53:20.834"/>
+</kw>
+<if>
+<branch type="IF" condition="${Identifier_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Identifier}</var>
+<arg>${el_Identifier}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.872" level="INFO">${Ext_Identifier} = 10thcensus0941unit</msg>
+<status status="PASS" starttime="20221121 14:53:20.834" endtime="20221121 14:53:20.872"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:20.834" endtime="20221121 14:53:20.872"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Identifier}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:20.872" endtime="20221121 14:53:20.872"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:20.872" endtime="20221121 14:53:20.872"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:20.834" endtime="20221121 14:53:20.872"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Copyright}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:20.872" level="INFO">${Ext_Copyright} = 0</msg>
+<status status="PASS" starttime="20221121 14:53:20.872" endtime="20221121 14:53:20.872"/>
+</kw>
+<kw name="Get Element Attribute" library="RPA.Browser.Selenium">
+<var>${pdf_link}</var>
+<arg>//*[@class="format-group"]//*[contains(text(),"PDF")]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20221121 14:53:20.920" level="INFO">${pdf_link} = https://archive.org/download/10thcensus0941unit/10thcensus0941unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:20.872" endtime="20221121 14:53:20.920"/>
+</kw>
+<kw name="Pdf Name" library="Data">
+<var>${Ext_pdf_name}</var>
+<arg>${pdf_link}</arg>
+<msg timestamp="20221121 14:53:20.920" level="INFO">10thcensus0941unit.pdf</msg>
+<msg timestamp="20221121 14:53:20.920" level="INFO">${Ext_pdf_name} = 10thcensus0941unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:20.920" endtime="20221121 14:53:20.920"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${DOWNLOAD_DIR}</var>
+<arg>${CONFIG}[Down_dir]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:20.928" level="INFO">${DOWNLOAD_DIR} = C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\Images</msg>
+<status status="PASS" starttime="20221121 14:53:20.928" endtime="20221121 14:53:20.928"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${header_list}</var>
+<arg>Title</arg>
+<arg>Author</arg>
+<arg>Publication date</arg>
+<arg>Publisher</arg>
+<arg>Collection</arg>
+<arg>Contributor</arg>
+<arg>Identifier</arg>
+<arg>Copyright</arg>
+<arg>image file name</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:20.928" level="INFO">${header_list} = ['Title', 'Author', 'Publication date', 'Publisher', 'Collection', 'Contributor', 'Identifier', 'Copyright', 'image file name']</msg>
+<status status="PASS" starttime="20221121 14:53:20.928" endtime="20221121 14:53:20.928"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${data_list}</var>
+<arg>${Ext_Title}</arg>
+<arg>${Ext_Author}</arg>
+<arg>${Ext_Publ_date}</arg>
+<arg>${Ext_Publisher}</arg>
+<arg>${Ext_Collection}</arg>
+<arg>${Ext_Contributor}</arg>
+<arg>${Ext_Identifier}</arg>
+<arg>${Ext_Copyright}</arg>
+<arg>${Ext_pdf_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:20.928" level="INFO">${data_list} = ['10th census, 1880, New York [microform]', 'United States. Bureau of the Census; United States. National Archives and Records Service', '[197-]', 'Washington, D.C. : National Archives and Records Ser...</msg>
+<status status="PASS" starttime="20221121 14:53:20.928" endtime="20221121 14:53:20.928"/>
+</kw>
+<kw name="Append To Csv" library="Data">
+<arg>Internet_Archive_out.csv</arg>
+<arg>${data_list}</arg>
+<status status="PASS" starttime="20221121 14:53:20.928" endtime="20221121 14:53:20.936"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:20.294" endtime="20221121 14:53:20.937"/>
+</kw>
+<kw name="Close Window" library="RPA.Browser.Selenium">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20221121 14:53:20.938" endtime="20221121 14:53:21.013"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:22.020" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:21.013" endtime="20221121 14:53:22.020"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>main</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:22.020" endtime="20221121 14:53:22.040"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:17.881" endtime="20221121 14:53:22.040"/>
+</iter>
+<iter>
+<var name="${i}">6</var>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>5x</arg>
+<arg>5sec</arg>
+<arg>Click Element</arg>
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>//*[@id="ikind-titleSorter"]/div/div[${i*1+2}]/div[2]/div[1]/a/div[1]/img</arg>
+<arg>CTRL</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:22.045" level="INFO">Clicking element '//*[@id="ikind-titleSorter"]/div/div[8]/div[2]/div[1]/a/div[1]/img' with CTRL.</msg>
+<status status="PASS" starttime="20221121 14:53:22.043" endtime="20221121 14:53:22.421"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:22.042" endtime="20221121 14:53:22.421"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221121 14:53:23.435" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221121 14:53:22.421" endtime="20221121 14:53:23.435"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221121 14:53:23.435" endtime="20221121 14:53:23.494"/>
+</kw>
+<kw name="Ad Donation Banner Closing" library="Subflow">
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Donation_Vis}</var>
+<arg>${el_donation_Vis}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:24.485" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[@id="donate-close-button"]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221121 14:53:24.486" level="INFO">${Donation_Vis} = False</msg>
+<status status="PASS" starttime="20221121 14:53:23.494" endtime="20221121 14:53:24.486"/>
+</kw>
+<if>
+<branch type="IF" condition="${Donation_Vis}">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>${el_donation_Vis}</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:24.489" endtime="20221121 14:53:24.490"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:24.489" endtime="20221121 14:53:24.490"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:24.487" endtime="20221121 14:53:24.490"/>
+</if>
+<status status="PASS" starttime="20221121 14:53:23.494" endtime="20221121 14:53:24.490"/>
+</kw>
+<kw name="Book Details Extraction" library="Subflow">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Title}</var>
+<arg>${el_title}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:24.530" level="INFO">${Ext_Title} = 10th census, 1880, New York [microform]</msg>
+<status status="PASS" starttime="20221121 14:53:24.491" endtime="20221121 14:53:24.531"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Author}</var>
+<arg>${el_Author}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:24.574" level="INFO">${Ext_Author} = United States. Bureau of the Census; United States. National Archives and Records Service</msg>
+<status status="PASS" starttime="20221121 14:53:24.531" endtime="20221121 14:53:24.575"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publ_date_Vis}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:24.631" level="INFO">Element '//*[contains(text(),"Publication date")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:24.631" level="INFO">${publ_date_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:24.575" endtime="20221121 14:53:24.632"/>
+</kw>
+<if>
+<branch type="IF" condition="${publ_date_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publ_date}</var>
+<arg>${el_Publication_date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:24.689" level="INFO">${Ext_Publ_date} = [197-]</msg>
+<status status="PASS" starttime="20221121 14:53:24.632" endtime="20221121 14:53:24.689"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:24.632" endtime="20221121 14:53:24.689"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publ_date}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:24.689" endtime="20221121 14:53:24.689"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:24.689" endtime="20221121 14:53:24.690"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:24.632" endtime="20221121 14:53:24.690"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${publisher_Vis}</var>
+<arg>${el_Publisher}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:24.777" level="INFO">Element '//*[contains(text(),"Publisher")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:24.777" level="INFO">${publisher_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:24.690" endtime="20221121 14:53:24.777"/>
+</kw>
+<if>
+<branch type="IF" condition="${publisher_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Publisher}</var>
+<arg>${el_Publisher}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:24.850" level="INFO">${Ext_Publisher} = Washington, D.C. : National Archives and Records Service, General Services Administration</msg>
+<status status="PASS" starttime="20221121 14:53:24.778" endtime="20221121 14:53:24.850"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:24.778" endtime="20221121 14:53:24.851"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Publisher}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:24.851" endtime="20221121 14:53:24.851"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:24.851" endtime="20221121 14:53:24.851"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:24.777" endtime="20221121 14:53:24.851"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Collection_Vis}</var>
+<arg>${el_Collection}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:24.937" level="INFO">Element '//*[contains(text(),"Collection")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:24.939" level="INFO">${Collection_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:24.852" endtime="20221121 14:53:24.939"/>
+</kw>
+<if>
+<branch type="IF" condition="${Collection_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Collection}</var>
+<arg>${el_Collection}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:25.034" level="INFO">${Ext_Collection} = 1880_census; microfilm; americana; us_census; genealogy; additional_collections</msg>
+<status status="PASS" starttime="20221121 14:53:24.940" endtime="20221121 14:53:25.034"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:24.939" endtime="20221121 14:53:25.035"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Collection}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:25.035" endtime="20221121 14:53:25.036"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:25.035" endtime="20221121 14:53:25.037"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:24.939" endtime="20221121 14:53:25.037"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Contributor_Vis}</var>
+<arg>${el_Contributor}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:25.234" level="INFO">Element '//*[contains(text(),"Contributor")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:25.234" level="INFO">${Contributor_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:25.037" endtime="20221121 14:53:25.234"/>
+</kw>
+<if>
+<branch type="IF" condition="${Contributor_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Contributor}</var>
+<arg>${el_Contributor}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:25.297" level="INFO">${Ext_Contributor} = Allen County Public Library Genealogy Center</msg>
+<status status="PASS" starttime="20221121 14:53:25.235" endtime="20221121 14:53:25.297"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:25.235" endtime="20221121 14:53:25.297"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Contributor}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:25.298" endtime="20221121 14:53:25.298"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:25.297" endtime="20221121 14:53:25.298"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:25.235" endtime="20221121 14:53:25.299"/>
+</if>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Identifier_Vis}</var>
+<arg>${el_Identifier}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221121 14:53:25.347" level="INFO">Element '//*[@class="metadata-definition"]//*[contains(text(),"Identifier")]/following-sibling::dd' is displayed.</msg>
+<msg timestamp="20221121 14:53:25.347" level="INFO">${Identifier_Vis} = True</msg>
+<status status="PASS" starttime="20221121 14:53:25.299" endtime="20221121 14:53:25.348"/>
+</kw>
+<if>
+<branch type="IF" condition="${Identifier_Vis}">
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${Ext_Identifier}</var>
+<arg>${el_Identifier}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221121 14:53:25.393" level="INFO">${Ext_Identifier} = 10thcensus0940unit</msg>
+<status status="PASS" starttime="20221121 14:53:25.348" endtime="20221121 14:53:25.393"/>
+</kw>
+<status status="PASS" starttime="20221121 14:53:25.348" endtime="20221121 14:53:25.393"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Identifier}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:25.394" endtime="20221121 14:53:25.394"/>
+</kw>
+<status status="NOT RUN" starttime="20221121 14:53:25.393" endtime="20221121 14:53:25.394"/>
+</branch>
+<status status="PASS" starttime="20221121 14:53:25.348" endtime="20221121 14:53:25.394"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ext_Copyright}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:25.395" level="INFO">${Ext_Copyright} = 0</msg>
+<status status="PASS" starttime="20221121 14:53:25.394" endtime="20221121 14:53:25.395"/>
+</kw>
+<kw name="Get Element Attribute" library="RPA.Browser.Selenium">
+<var>${pdf_link}</var>
+<arg>//*[@class="format-group"]//*[contains(text(),"PDF")]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20221121 14:53:25.443" level="INFO">${pdf_link} = https://archive.org/download/10thcensus0940unit/10thcensus0940unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:25.395" endtime="20221121 14:53:25.443"/>
+</kw>
+<kw name="Pdf Name" library="Data">
+<var>${Ext_pdf_name}</var>
+<arg>${pdf_link}</arg>
+<msg timestamp="20221121 14:53:25.443" level="INFO">10thcensus0940unit.pdf</msg>
+<msg timestamp="20221121 14:53:25.443" level="INFO">${Ext_pdf_name} = 10thcensus0940unit.pdf</msg>
+<status status="PASS" starttime="20221121 14:53:25.443" endtime="20221121 14:53:25.443"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${DOWNLOAD_DIR}</var>
+<arg>${CONFIG}[Down_dir]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221121 14:53:25.443" level="INFO">${DOWNLOAD_DIR} = C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\Images</msg>
+<status status="PASS" starttime="20221121 14:53:25.443" endtime="20221121 14:53:25.443"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${header_list}</var>
+<arg>Title</arg>
+<arg>Author</arg>
+<arg>Publication date</arg>
+<arg>Publisher</arg>
+<arg>Collection</arg>
+<arg>Contributor</arg>
+<arg>Identifier</arg>
+<arg>Copyright</arg>
+<arg>image file name</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:25.443" level="INFO">${header_list} = ['Title', 'Author', 'Publication date', 'Publisher', 'Collection', 'Contributor', 'Identifier', 'Copyright', 'image file name']</msg>
+<status status="PASS" starttime="20221121 14:53:25.443" endtime="20221121 14:53:25.443"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${data_list}</var>
+<arg>${Ext_Title}</arg>
+<arg>${Ext_Author}</arg>
+<arg>${Ext_Publ_date}</arg>
+<arg>${Ext_Publisher}</arg>
+<arg>${Ext_Collection}</arg>
+<arg>${Ext_Contributor}</arg>
+<arg>${Ext_Identifier}</arg>
+<arg>${Ext_Copyright}</arg>
+<arg>${Ext_pdf_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221121 14:53:25.443" level="INFO">${data_list} = ['10th census, 1880, New York [microform]', 'United States. Bureau of the Census; United States. National Archives and Records Service', '[197-]', 'Washington, D.C. : National Archives and Records Ser...</msg>
+<status status="PASS" starttime="20221121 14:53:25.443" endtime="20221121 14:53:25.443"/>
+</kw>
+<kw name="Append To Csv" library="Data">
+<arg>Internet_Archive_out.csv</arg>
+<arg>${data_list}</arg>
+<msg timestamp="20221121 14:53:25.443" level="FAIL">PermissionError: [Errno 13] Permission denied: 'Internet_Archive_out.csv'</msg>
+<status status="FAIL" starttime="20221121 14:53:25.443" endtime="20221121 14:53:25.456"/>
+</kw>
+<status status="FAIL" starttime="20221121 14:53:24.491" endtime="20221121 14:53:25.459"/>
+</kw>
+<kw name="Close Window" library="RPA.Browser.Selenium">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:25.460" endtime="20221121 14:53:25.460"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:25.460" endtime="20221121 14:53:25.460"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>main</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" starttime="20221121 14:53:25.460" endtime="20221121 14:53:25.460"/>
+</kw>
+<status status="FAIL" starttime="20221121 14:53:22.041" endtime="20221121 14:53:25.460"/>
+</iter>
+<status status="FAIL" starttime="20221121 14:53:09.114" endtime="20221121 14:53:25.464"/>
+</for>
+<status status="FAIL" starttime="20221121 14:52:30.443" endtime="20221121 14:53:25.465"/>
+</kw>
+<status status="FAIL" starttime="20221121 14:52:30.443" endtime="20221121 14:53:25.467">PermissionError: [Errno 13] Permission denied: 'Internet_Archive_out.csv'</status>
+</test>
+<status status="FAIL" starttime="20221121 14:52:22.441" endtime="20221121 14:53:25.468"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Task1">Task1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20221121 14:52:30.443" level="ERROR">Error in file 'C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\Task1.robot' on line 3: Error in file 'C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\tasks.robot' on line 11: Resource file with 'Tasks' section is invalid.</msg>
+</errors>
+</robot>

@@ -1,0 +1,12 @@
+==============================================================================
+Task1                                                                         
+==============================================================================
+Run Task                                                              Reading worksheet: Config
+| FAIL |
+PermissionError: [Errno 13] Permission denied: 'Internet_Archive_out.csv'
+------------------------------------------------------------------------------
+Task1                                                                 | FAIL |
+1 task, 0 passed, 1 failed
+==============================================================================
+Output:  C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\output\output.xml
+Log:     C:\Users\Q0041\Documents\Robots\SBL_Corp_Hard_Difficulty\output\log.html
