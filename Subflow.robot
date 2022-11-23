@@ -125,7 +125,7 @@ Book Details Extraction
     ${pdf_link}=       Get Element Attribute       //*[@class="format-group"]//*[contains(text(),"PDF")]     href  
     ${Ext_pdf_name}     pdf_name        ${pdf_link} 
     #---------------PDF Downloading--------------------
-    # pdf_downld     ${pdf_link}   
+    pdf_downld     ${pdf_link}   
     #---------------------------------------
     ${header_list}      Create List     Title     Author    Publication date    Publisher    Collection    Contributor    Identifier    Copyright    image file name
     
